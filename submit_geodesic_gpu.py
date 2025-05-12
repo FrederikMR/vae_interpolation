@@ -18,7 +18,7 @@ import time
 
 def submit_job():
     
-    os.system("bsub < submit_vae.sh")
+    os.system("bsub < submit_geodesic.sh")
     
     return
 
@@ -26,10 +26,10 @@ def submit_job():
 
 def generate_job(dataset, data_path, method, lam):
 
-    with open ('submit_vae.sh', 'w') as rsh:
+    with open ('submit_geodesic.sh', 'w') as rsh:
         rsh.write(f'''\
     #! /bin/bash
-    #BSUB -q gpuv100
+    #BSUB -q gpua100
     #BSUB -J {dataset}_{method}
     #BSUB -n 4
     #BSUB -gpu "num=1:mode=exclusive_process"

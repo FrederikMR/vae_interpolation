@@ -182,7 +182,7 @@ class VAE_CELEBA(nn.Module):
         x = self.decoder(x)
         mu, std = self.encoder(x)
 
-        z = self.rep_par(mu, std)
+        z = mu#self.rep_par(mu, std)
         x_hat = self.decoder(z)
                 
         # compute the ELBO with and without the beta parameter: 

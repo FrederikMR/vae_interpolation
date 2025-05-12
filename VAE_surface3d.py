@@ -176,7 +176,7 @@ class VAE_3d(nn.Module):
         mu, var = self.mu_net(x_encoded), self.var_net(x_encoded)
         std = torch.sqrt(var)
 
-        z = self.rep_par(mu, std)
+        z = mu#self.rep_par(mu, std)
         x_hat = self.decoder(z)
                 
         # compute the ELBO with and without the beta parameter: 
